@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameCheck">
+
+
+    <ScrollView android:layout_marginTop="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/verb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/answer"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/tense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/verb"
+                tools:layout_width="match_parent" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="212dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tense"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/p1s"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/p2s"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/p1s"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/p3s"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/p2s"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/p1p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/p3s"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/p2p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/p1p"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/p3p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/p2p"
+                tools:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/p3p"
+                tools:layout_width="match_parent" />
+
+            <Button
+                android:id="@+id/button_cont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B0F7F7"
+                android:textSize="16sp"
+                android:text="Seguir jugando"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/level"
+                tools:layout_width="match_parent" />
+
+            <Button
+                android:id="@+id/button_mainMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B0F7F7"
+                android:textSize="16sp"
+                android:text="Ir al menú principal"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/button_cont"
+                tools:layout_width="match_parent" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

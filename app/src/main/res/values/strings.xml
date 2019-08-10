@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Brush Up! - Verbos</string>
+    <string name="authormail">javierfdeztroncoso@gmail.com</string>
+    <string name="authorname">Javier F. Troncoso</string>
+    <string name="author">DESARROLLADO POR</string>
+    <string name="contact">CONTACTO</string>
+    <string name="help">INFORMACIÓN</string>
+    <string name="helpdesc">Aplicación desarrollada para repasar tiempos verbales utilizando una extensa lista de verbos, tanto regulares como irregulares, publicada por Fred Jehle. La sección con las estadística permite ver el progreso, mientras que el diccionario permite acceder a todos los tiempos verbales y verbos disponibles.</string>
+</resources>
