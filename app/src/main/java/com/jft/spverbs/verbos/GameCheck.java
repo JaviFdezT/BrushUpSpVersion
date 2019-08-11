@@ -19,8 +19,20 @@ public class GameCheck extends AppCompatActivity {
         String rightWord = intent.getStringExtra("rightWord");
         String rightMood = intent.getStringExtra("rightMood");
         String rightTense = intent.getStringExtra("rightTense");
+        String person = intent.getStringExtra("rightPerson");
+        System.out.println(person);
+        Integer rightPerson = Integer.parseInt(person);
         boolean rightAnswer = intent.getExtras().getBoolean("rightAnswer");
         int newLevel=1;
+        String color1;
+        String color2;
+        if (rightAnswer) {
+            color1="#00FF00";
+            color2="#254117";
+        } else {
+            color1="#F9966B";
+            color2="#990012";
+        }
 
         TextView textView0 = (TextView) findViewById(R.id.answer);
         TextView textView1 = (TextView) findViewById(R.id.verb);
@@ -31,34 +43,22 @@ public class GameCheck extends AppCompatActivity {
         TextView textView6 = (TextView) findViewById(R.id.p1p);
         TextView textView7 = (TextView) findViewById(R.id.p2p);
         TextView textView8 = (TextView) findViewById(R.id.p3p);
-        TextView textView9 = (TextView) findViewById(R.id.level);
+        TextView textView9 = (TextView) findViewById(R.id.meaning);
 
 
         DdBb myddbb = new DdBb(getApplicationContext());
         ConjugatedForm verb=myddbb.getVerb(rightWord,rightMood,rightTense);
-        int rightCategory=verb.getLevel();
 
         try {
             if (rightAnswer) {
-                textView0.setText("Right answer!");
-                if (rightCategory < 10) {
-                    newLevel = rightCategory + 1;
-                    textView9.setTextColor(Color.parseColor("#4C9900"));
-                    myddbb.updateLevel(rightWord,rightMood,rightTense,newLevel);
-                } else {
-                    textView9.setTextColor(Color.parseColor("#000000"));
-                }
+                textView0.setText("¡Correcto!");
+                newLevel = 1;
+                myddbb.updateLevel(rightWord,rightMood,rightTense,newLevel);
             } else {
-                textView0.setText("Wrong answer!");
-                if (rightCategory > 1) {
-                    newLevel = rightCategory - 1;
-                    textView9.setTextColor(Color.parseColor("#FF3333"));
-                    myddbb.updateLevel(rightWord,rightMood,rightTense,newLevel);
-                } else {
-                    textView9.setTextColor(Color.parseColor("#000000"));
-                }
+                textView0.setText("¡Incorrecto!");
+                newLevel = 0;
+                myddbb.updateLevel(rightWord,rightMood,rightTense,newLevel);
             }
-            textView9.setText(Integer.toString(newLevel));
 
             textView1.setText(rightWord.toUpperCase());
             textView2.setText(" "+rightTense+" ("+rightMood+") ");
@@ -68,6 +68,27 @@ public class GameCheck extends AppCompatActivity {
             textView6.setText("(nosotr@s) "+verb.getForm_1p());
             textView7.setText("(vosotr@s) "+verb.getForm_2p());
             textView8.setText("(ell@s) "+verb.getForm_3p());
+            textView9.setText("("+verb.getVerb_eng()+")");
+
+            if (rightPerson==0) {
+                textView3.setBackgroundColor(Color.parseColor(color1));
+            } else if (rightPerson==1) {
+                textView4.setBackgroundColor(Color.parseColor(color1));
+            } else if (rightPerson==2) {
+                textView5.setBackgroundColor(Color.parseColor(color1));
+            } else if (rightPerson==3) {
+                textView6.setBackgroundColor(Color.parseColor(color1));
+            } else if (rightPerson==4) {
+                textView7.setBackgroundColor(Color.parseColor(color1));
+            } else {
+                textView8.setBackgroundColor(Color.parseColor(color1));
+            }
+            if (rightAnswer) {
+                textView0.setTextColor(Color.parseColor(color2));
+            } else {
+                textView0.setTextColor(Color.parseColor(color2));
+            }
+
         } catch (Exception e) {
             Intent activity2 = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(activity2);

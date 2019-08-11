@@ -55,6 +55,16 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintTop_toBottomOf="@+id/buttonstats" />
 
+            <Button
+                android:id="@+id/buttonconfig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="#B0F7F7"
+                android:text="Configuración"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintTop_toBottomOf="@+id/buttondict" />
+
 
             <Button
                 android:id="@+id/buttoncredits"
@@ -64,7 +74,7 @@
                 android:background="#B0F7F7"
                 android:text="Créditos"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintTop_toBottomOf="@+id/buttondict" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonconfig" />
 
             <Button
                 android:id="@+id/buttonexit"

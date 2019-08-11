@@ -49,8 +49,10 @@ public class ShowVerbTense extends AppCompatActivity {
 
         TextView textView1 = (TextView) findViewById(R.id.verb);
         TextView textView2 = (TextView) findViewById(R.id.tense);
+        TextView textView3 = (TextView) findViewById(R.id.meaning);
         textView1.setText(showVerb.toUpperCase());
         textView2.setText(" "+showTense+" ("+showMood+") ");
+        textView3.setText("("+verb.getVerb_eng()+")");
 
         Button goback_button = (Button)findViewById(R.id.button_mainMenu);
         goback_button.setOnClickListener(new View.OnClickListener() {

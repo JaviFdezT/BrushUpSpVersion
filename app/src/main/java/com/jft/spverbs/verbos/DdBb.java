@@ -40,7 +40,7 @@ public class DdBb extends SQLiteOpenHelper {
     private android.content.res.Resources res;
 
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     // Database Name
     private static final String DATABASE_NAME = "com.jft.spverbs.verbos";
 
@@ -63,12 +63,16 @@ public class DdBb extends SQLiteOpenHelper {
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS VERBS");
-        this.onCreate(db);
+        if (oldVersion < 3) {
+            String UPDATE_TABLE = "UPDATE VERBS SET level=0 WHERE NOT level=0;";
+            try {
+                db.execSQL(UPDATE_TABLE);
+                this.loadData(db);
+            } catch (Exception e) {}
+        }
     }
 
     public void loadData(SQLiteDatabase db){
-
         try {
             InputStream inputStream = mycontext.getResources().openRawResource(R.raw.ddbb);
             BufferedReader reader = new BufferedReader( new InputStreamReader(inputStream));
@@ -265,6 +269,15 @@ public class DdBb extends SQLiteOpenHelper {
         this.close();
     }
 
+    public void resetLevels() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UPDATE_TABLE = "UPDATE VERBS SET level=0;";
+        try {
+            db.execSQL(UPDATE_TABLE);
+        } catch (Exception e) {}
+        this.close();
+    }
+
 
 
     public Map<String, Float> getStatsTense() {
@@ -283,19 +296,20 @@ public class DdBb extends SQLiteOpenHelper {
                 n++;
                 key=cursor.getString(3)+" ("+cursor.getString(2)+")";
                 if (stats.get(key) != null) {
-                    value1=stats.get(key)+(Integer) Integer.parseInt(cursor.getString(12))-1;
+                    value1=stats.get(key)+(Integer) Integer.parseInt(cursor.getString(12));
                 } else {
-                    value1=(Integer) Integer.parseInt(cursor.getString(12))-1;
+                    value1=(Integer) Integer.parseInt(cursor.getString(12));
                 }
                 if (total.get(key) != null) {
-                    value2=total.get(key)+9;
+                    value2=total.get(key)+1;
                 } else {
-                    value2=9;
+                    value2=1;
                 }
                 stats.put(key, value1);
                 total.put(key, value2);
             } while (cursor.moveToNext());
         }
+        cursor.close();
 
 
         Iterator it = stats.entrySet().iterator();
@@ -310,7 +324,6 @@ public class DdBb extends SQLiteOpenHelper {
         }
 
         //finalstats.put("total", (float) n);
-        cursor.close();
         this.close();
         return finalstats;
     }

@@ -30,16 +30,6 @@ public class GameOptions extends AppCompatActivity {
 
         verbs = myddbb.getRandomVerb();
         n=verbs.size();
-        /*if (n==0) {
-            try {
-                BufferedReader reader = new BufferedReader( new InputStreamReader(getAssets().open("ddbb.sql")));
-                String mLine;
-                while ((mLine = reader.readLine()) != null)
-                    myddbb.runQuery(mLine);
-                verbs = myddbb.getRandomVerb();
-                n=verbs.size();
-            } catch (Exception e2) {}
-        }*/
 
         if (n<7) {
             Toast.makeText(this, "Too few verbs in the dictionary. Please, try again", 20).show();
@@ -64,7 +54,7 @@ public class GameOptions extends AppCompatActivity {
             }
             Collections.shuffle(listrRandom1);
             Collections.shuffle(listrRandom2);
-            int person = listrRandom1.get(0);
+            int person = listrRandom2.get(0);
             questionWord = verbs.get(listrRandom1.get(0));
             falseWord1 = verbs.get(listrRandom1.get(1));
             falseWord2 = verbs.get(listrRandom1.get(2));
@@ -164,11 +154,13 @@ public class GameOptions extends AppCompatActivity {
             textView0.setText(question0);
             textView1.setText(question1);
             textView2.setText(question2);
+            System.out.println(person);
 
             final Intent activity = new Intent(getApplicationContext(), GameCheck.class);
             activity.putExtra("rightWord",questionWord.getVerb());
             activity.putExtra("rightMood",questionWord.getMood());
             activity.putExtra("rightTense",questionWord.getTense());
+            activity.putExtra("rightPerson",Integer.toString(person));
             final int indexInList=questionList.indexOf(questionWord);
             boolean rightAnswer;
             p1_button.setOnClickListener(new View.OnClickListener() {

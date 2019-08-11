@@ -33,24 +33,6 @@ public class ShowDict extends AppCompatActivity {
 
         DdBb myddbb = new DdBb(this);
         fullwords=myddbb.getInfinitives();
-        /*if (fullwords.size()==0) {
-            try {
-                BufferedReader reader = new BufferedReader( new InputStreamReader(getAssets().open("ddbb.sql")));
-                String mLine;
-                while ((mLine = reader.readLine()) != null)
-                    myddbb.runQuery(mLine);
-                fullwords=myddbb.getInfinitives();
-                if (fullwords.size()==0) {
-                    Toast.makeText(getApplicationContext(), "There are no verbs. ", 20).show();
-                    Intent activity = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(activity);
-                }
-            } catch (Exception e2) {
-                Toast.makeText(getApplicationContext(), "There are no verbs. ", 20).show();
-                Intent activity = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(activity);
-            }
-        }*/
 
         final List<String> words=new ArrayList<String>();
         final List<Integer> absoluteTemporaryList=new ArrayList<Integer>();
