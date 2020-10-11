@@ -72,6 +72,7 @@ public class GameOptions extends AppCompatActivity {
             Collections.shuffle(questionList);
 
             TextView textView0 = (TextView) findViewById(R.id.question0);
+            TextView textMean = (TextView) findViewById(R.id.meaning);
             TextView textView1 = (TextView) findViewById(R.id.question1);
             TextView textView2 = (TextView) findViewById(R.id.question2);
             Button p1_button = (Button)findViewById(R.id.buttoncheck1);
@@ -82,6 +83,7 @@ public class GameOptions extends AppCompatActivity {
             Button p6_button = (Button)findViewById(R.id.buttoncheck6);
 
             String question0=" "+questionWord.getVerb().toUpperCase()+" ";
+            String questionMean=" ("+questionWord.getVerb_eng().toLowerCase()+") ";
             String question1=" "+questionWord.getTense()+" ("+questionWord.getMood()+") ";
             String question2=null;
 
@@ -152,6 +154,7 @@ public class GameOptions extends AppCompatActivity {
             p5_button.setText(option5);
             p6_button.setText(option6);
             textView0.setText(question0);
+            textMean.setText(questionMean);
             textView1.setText(question1);
             textView2.setText(question2);
             System.out.println(person);

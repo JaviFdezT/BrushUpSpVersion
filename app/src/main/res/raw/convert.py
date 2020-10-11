@@ -28,7 +28,6 @@ for line in file1:
 if len(values)>0:
              query="INSERT INTO VERBS (verb, verb_eng, mood, tense,form_1s, form_2s, form_3s, form_1p, form_2p, form_3p, gerund, pastparticiple, level) VALUES "+",".join(values)+";"
              file2.write(query+"\n")
-             values=[]
 file1.close()
 print(n,"verbs")
 file2.close()
